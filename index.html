@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Landing Pages</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen flex flex-col">
+    <header class="sticky top-0 z-50 bg-slate-900 text-white">
+        <!-- <nav class="flex justify-between items-center p-4">
+            <span>Logo</span>
+            <div class="flex gap-4">
+                <a>Home</a>
+                <a>About</a>
+                <a>Contact</a>
+            </div>
+        </nav> -->
+        <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+            <span>Logo</span>
+            <div class="hidden md:flex gap-4">
+                <a href="#home" class="hover:text-slate-300">Home</a>
+                <a href="#About" class="hover:text-slate-300">About</a>
+                <a href="#Contact" class="hover:text-slate-300">Contact</a>
+            </div>
+            <button id="menuBtn" class="md:hidden text-white" aria-label="Buka Menu" aria-expanded="false">
+                <svg viewbox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </button>
+        </nav>
+        <div id="mobileMenu"
+            class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-6 py-4 flex-col gap-4 text-slate-300">
+            <a href="#home" class="hover:text-white py-2">Home</a>
+            <a href="#About" class="hover:text-white py-2">About</a>
+            <a href="#Contact" class="hover:text-white py-2">Contact</a>
+        </div>
+    </header>
+    <section class="flex flex-col items-center justify-between text-center py-24 px-6">
+        <h1 class="text-4xl font-bold">
+            Landing Page
+        </h1>
+        <p>Aku adalah seorang developer</p>
+        <button class="bg-blue-900 text-white px-4 py-2 rounded-lg mt-4 hover:bg-blue-700 transition duration-300">Get
+            Started</button>
+    </section>
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
+        <div class="bg-green-500 shadow-md rounded-lg p-6">
+            <h2 class="text-xl font-semibold mb-2">Landing Page 1</h2>
+            <p class="text-gray-600">contoh</p>
+        </div>
+        <div class="bg-red-400 shadow-md rounded-lg p-6">
+            <h2 class="text-xl font-semibold mb-2">Landing Page 2</h2>
+            <p class="text-gray-600">contoh</p>
+        </div>
+        <div class="bg-blue-400 shadow-md rounded-lg p-6">
+            <h2 class="text-xl font-semibold mb-2">Landing Page 3</h2>
+            <p class="text-gray-600">contoh</p>
+        </div>
+
+        <form class="flex flex-col gap-4 p-6">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="border rounded p-2" />
+            <button type="submit"
+                class="bg-blue-900 text-white px-4 py-2 rounded-lg mt-4 hover:bg-blue-700 transition duration-300">Submit</button>
+        </form>
+    </section>
+
+    <footer class="mt-auto flex justify-between items-center p-4 bg-slate-900 text-white">
+        <p>&copy; 2026 My Landing Pages. All rights reserved.</p>
+        <div class="flex gap-3">
+            <a>Github</a>
+            <a>Instagram</a>
+        </div>
+    </footer>
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            const isOpen = !mobileMenu.classList.contains('hidden');
+
+            mobileMenu.classList.toggle('hidden', isOpen);
+            mobileMenu.classList.toggle('flex', !isOpen);
+
+            menuBtn.setAttribute('aria-expanded', String(!isOpen));
+            menuBtn.setAttribute('aria-label', isOpen ? 'Tutup menu' : 'Buka menu');
+        });
+        mobileMenu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                menuBtn.setAttribute('aria-label', 'Buka menu');
+            });
+        });
+    </script>
+</body>
+
+</html>
